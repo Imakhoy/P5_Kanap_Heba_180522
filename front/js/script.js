@@ -1,4 +1,4 @@
-//Etape 3 Insérer les produits dans la page d’accueil
+//Étape 3 : Insérer les produits dans la page d’accueil
 //create a function to insert the products
 function displayProducts(dataProduct) {
     if (dataProduct) {
@@ -11,22 +11,25 @@ function displayProducts(dataProduct) {
         let description = document.createElement('p');
 
         document.getElementById('items').appendChild(link);
-    
+        //Step 4 & 5, 4: link to product, 5:recover the id of the product to display
+        //In file back/routes/product.js, line7: router.get('/:id', productCtrl.getOneProduct);
+        link.href = './product.html?id=' + dataProduct[i]._id;
 
-      //Ajout des éléments (enfants) : Image, Title et Description qui ont pour parent: Product (article)
-      product.appendChild(image);
-      image.src = dataProduct[i].imageUrl;
-      image.alt = dataProduct[i].altTxt;
+        // Création de l'enfant Product qui a pour parent Link (a)
+        link.appendChild(product);
+        
+        //Ajout des éléments (enfants) : Image, Title et Description qui ont pour parent: Product (article)
+        product.appendChild(image);
+        image.src = dataProduct[i].imageUrl;
+        image.alt = dataProduct[i].altTxt;
 
-      product.appendChild(title);
-      title.classList.add('title');
-      title.textContent = dataProduct[i].name;
+        product.appendChild(title);
+        title.classList.add('title');
+        title.textContent = dataProduct[i].name;
 
-      product.appendChild(description);
-      description.classList.add('description');
-      description.textContent = dataProduct[i].description;
+        product.appendChild(description);
+        description.classList.add('description');
+        description.textContent = dataProduct[i].description;
+      }
     }
   }
-}
-
-
