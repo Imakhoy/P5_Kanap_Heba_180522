@@ -56,3 +56,9 @@ function displayProduct(myProduct) {
           return JSON.parse(basket);
         }
       }
+    // To add a product in the basket 
+    function addBasket(product) {
+        //put the contents of the basket in the basket variable
+        let basket = getBasket();
+
+    }
