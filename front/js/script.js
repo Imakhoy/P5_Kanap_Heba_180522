@@ -1,4 +1,12 @@
 //Étape 3 : Insérer les produits dans la page d’accueil
+//Requête de l'API avec Fetch
+fetch('http://localhost:3000/api/products')
+.then((response) => response.json())
+.then((data) => displayProducts(data))
+.catch(function (error) {
+  console.log(error);
+});
+
 //create a function to insert the products
 function displayProducts(dataProduct) {
     if (dataProduct) {
@@ -17,7 +25,7 @@ function displayProducts(dataProduct) {
 
         // Création de l'enfant Product qui a pour parent Link (a)
         link.appendChild(product);
-        
+
         //Ajout des éléments (enfants) : Image, Title et Description qui ont pour parent: Product (article)
         product.appendChild(image);
         image.src = dataProduct[i].imageUrl;
