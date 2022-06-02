@@ -1,12 +1,13 @@
 //Étape 3 : Insérer les produits dans la page d’accueil
-//Requête de l'API avec Fetch
-fetch('http://localhost:3000/api/products')
-.then((response) => response.json())
-.then((data) => displayProducts(data))
-.catch(function (error) {
-  console.log(error);
-});
 
+
+  //Requête de l'API avec Fetch
+  fetch('http://localhost:3000/api/products')
+    .then((response) => response.json())
+    .then((data) => displayProducts(data))
+    .catch(function (error) {
+      console.log(error);
+    });
 //create a function to insert the products
 function displayProducts(dataProduct) {
     if (dataProduct) {

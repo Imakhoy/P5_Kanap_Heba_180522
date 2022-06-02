@@ -32,11 +32,27 @@ function displayProduct(myProduct) {
     );
   }
 }
-    //Requête de l'API avec fetch
-    fetch('http://localhost:3000/api/products/' + idProduct)
-      .then((response) => response.json())
-      .then((data) => displayProduct(data))
-      .catch(function (error) {
-        console.log(error);
-      });
-  
+
+  //Requête de l'API avec fetch
+  fetch('http://localhost:3000/api/products/' + idProduct)
+    .then((response) => response.json())
+    .then((data) => displayProduct(data))
+    .catch(function (error) {
+      console.log(error);
+    });
+
+    /* Etape 7 : Ajouter des produits dans le panier */
+    // create a function 'saveBasket' qui récupère le panier et l'envoie dans le localStorage
+    function saveBasket(basket) {
+        localStorage.setItem('product', JSON.stringify(basket));
+    }
+    //Alors la je dois cree une fonction pour récupèrer le panier dans le localStorage.
+    //if it is empty, on retourne un array, and if there are elements we gonna return in the basket
+    function getBasket() {
+        let basket = localStorage.getItem('product');
+        if (basket == null) {
+          return [];
+        } else {
+          return JSON.parse(basket);
+        }
+      }
