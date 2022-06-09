@@ -56,7 +56,7 @@ if (localStorage.getItem('product') === null) {
   }
 
   //Étape 9 : Gérer la modification et la suppression de produits dans la page Panier
-  //create function to modify the cart:
+  //create function to modify the products in the cart:
   function changeBasket() {
     let inputsQuantity = document.querySelectorAll('.itemQuantity');
 
@@ -101,11 +101,34 @@ if (localStorage.getItem('product') === null) {
       });
     });
   }
+//create function to delete the products in the cart
+    let inputsDelete = document.querySelectorAll('.deleteItem');
 
+    inputsDelete.forEach((input) => {
+      input.addEventListener('click', (e) => {
+        let articleHMTL = e.target.closest('article');
+        let articleHTMLId = articleHMTL.dataset.id;
+        let articleHTMLcolor = articleHMTL.dataset.color;
 
+        localStorageCart = localStorageCart.filter((e) => !(e.id === articleHTMLId && e.color === articleHTMLcolor));
 
+        if (localStorageCart.find((e) => e.id === articleHTMLId && e.color === articleHTMLcolor)) {
+          localStorage.clear('product');
+          alert("désolé une erreur s'est produite, nous n'avons pas pu finaliser votre commande, veuillez réessayer plus tard");
+        } else {
+          articleHMTL.remove();
+          localStorage.setItem('product', JSON.stringify(localStorageCart));
 
-  localStorageCart.forEach((productLS) => {
+          if (localStorageCart.length < 1) {
+            localStorage.clear('product');
+          }
+        }
+        location.reload();
+      });
+    });
+  }
+
+localStorageCart.forEach((productLS) => {
     // Pour chaque produit dans le local Storage récupérer son id
     fetch(`http://localhost:3000/api/products/${productLS.id}`) // Requete à l'API de l'ID récupéré dans le local Storage
       .then(function (res) {
@@ -121,4 +144,3 @@ if (localStorage.getItem('product') === null) {
         deleteBasket();
       });
   }); 
-}
