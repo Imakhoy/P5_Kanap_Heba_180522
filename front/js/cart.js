@@ -54,8 +54,9 @@ if (localStorage.getItem('product') === null) {
     //recover product ID to put in an array to pass the POST request to the API
     product.push(productLS.id);
   }
-
+  
   //Étape 9 : Gérer la modification et la suppression de produits dans la page Panier
+  //Modfiy
   //create function to modify the products in the cart:
   function changeBasket() {
     let inputsQuantity = document.querySelectorAll('.itemQuantity');
@@ -101,7 +102,8 @@ if (localStorage.getItem('product') === null) {
       });
     });
   }
-//create function to delete the products in the cart
+    //delete 
+    //create a function to delete the products in the cart
     let inputsDelete = document.querySelectorAll('.deleteItem');
 
     inputsDelete.forEach((input) => {
@@ -137,10 +139,11 @@ localStorageCart.forEach((productLS) => {
         }
       })
       .then((productAPI) => {
-        // Affichage du panier
+        //display the cart
         showBasket(productAPI, productLS);
         calcBasket(productAPI, productLS);
         changeBasket();
         deleteBasket();
       });
   }); 
+
