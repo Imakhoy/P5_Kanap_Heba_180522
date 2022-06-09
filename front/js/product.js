@@ -9,11 +9,11 @@ const idProduct = new URL(window.location.href).searchParams.get('id');
 //Etape 6: Insérer un produit et ses détails dans la page produit
 //Create a function displayProduct to display the product onthe page
 function displayProduct(myProduct) {
-    const productImg = document.createElement('img');
-    const title = document.querySelector('#title');
-    const price = document.querySelector('#price');
-    const description = document.querySelector('#description');
-    const colors = document.querySelector('#colors');
+  const productImg = document.createElement('img');
+  const title = document.querySelector('#title');
+  const price = document.querySelector('#price');
+  const description = document.querySelector('#description');
+  const colors = document.querySelector('#colors');
 
 //Affichage du produit
   document.querySelector('.item__img').appendChild(productImg);
