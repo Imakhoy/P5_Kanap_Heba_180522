@@ -51,14 +51,62 @@ if (localStorage.getItem('product') === null) {
     totalPrice += productAPI.price * productLS.quantity;
     document.getElementById('totalPrice').textContent = `${totalPrice}`;
 
-    //recover product ID to put in an array to pass the POST request to the API    product.push(productLS.id);
+    //recover product ID to put in an array to pass the POST request to the API
+    product.push(productLS.id);
   }
 
-  
-  
+  //Étape 9 : Gérer la modification et la suppression de produits dans la page Panier
+  //create function to modify the cart:
+  function changeBasket() {
+    let inputsQuantity = document.querySelectorAll('.itemQuantity');
+
+    inputsQuantity.forEach((input) => {
+      input.addEventListener('change', (e) => {
+        let articleHMTL = e.target.closest('article');
+        let articleHTMLId = articleHMTL.dataset.id;
+        let articleHTMLcolor = articleHMTL.dataset.color;
+
+        //le premier article dans le local storage qui respecte la condition
+        let articleChanged = localStorageCart.find(
+        (e) => e.id === articleHTMLId && e.color === articleHTMLcolor
+       );
+
+        if (articleChanged !== undefined) {
+          articleChanged.quantity = parseInt(e.target.value);
+
+          if (articleChanged.quantity > 100) {
+            alert('Attention, la quantité à été limitée à 100');
+            e.target.value = 100;
+            articleChanged.quantity = parseInt(e.target.value);
+            localStorage.setItem(
+              'product',
+              JSON.stringify(localStorageCart)
+            );
+          } else if (articleChanged.quantity <= 0) {
+            localStorageCart = localStorageCart.filter((e) => !(e.id === articleHTMLId && e.color === articleHTMLcolor));
+            articleHMTL.remove();
+            localStorage.setItem('product', JSON.stringify(localStorageCart));
+
+            if (localStorageCart.length < 1) {
+              localStorage.clear('product');
+            }
+          } else {
+            localStorage.setItem('product', JSON.stringify(localStorageCart));
+          }
+        } else {
+          localStorage.clear('product');
+          alert("Désolé, une erreur s'est produite, nous n'avons pas pu finalier votre commande, veuillez réessayer plus tard");
+        }
+        location.reload();
+      });
+    });
+  }
+
+
+
+
   localStorageCart.forEach((productLS) => {
     // Pour chaque produit dans le local Storage récupérer son id
-
     fetch(`http://localhost:3000/api/products/${productLS.id}`) // Requete à l'API de l'ID récupéré dans le local Storage
       .then(function (res) {
         if (res.ok) {
