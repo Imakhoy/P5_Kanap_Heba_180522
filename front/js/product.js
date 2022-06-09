@@ -60,5 +60,64 @@ function displayProduct(myProduct) {
     function addBasket(product) {
         //put the contents of the basket in the basket variable
         let basket = getBasket();
+          // On regarde si le produit ajouté au panier existe dans la même couleur ou pas
+  let foundProduct = basket.find(
+    (element) => element.id == product.id && element.color == product.color
+  );
 
+
+    //If yes, we update the quantity
+    if (foundProduct != undefined) {
+        let newQuantity =
+        parseInt(foundProduct.quantity) + parseInt(product.quantity);
+        foundProduct.quantity = newQuantity;
+        location.reload();
+        window.confirm(                                                   
+        `Votre panier a été mis à jour de ${quantity} ${title.textContent} ${color}`
+        );
     }
+    // If no, we add the product in basket
+    else {
+        product.quantity = quantity;
+        //to add the product at the end of our basket
+        basket.push(product); 
+        location.reload();
+        window.confirm(
+        `Félicitations! Votre commande de ${quantity} ${title.textContent} ${color} est ajoutée au panier`
+        );
+    }
+    saveBasket(basket); // save
+    }
+    
+// Ce que l'on veut dans notre tableau grace au clic de "ajouter au panier":
+function addToCart(){
+  // recover the quantity chosen by the user
+  document.getElementById('quantity').addEventListener('change', (event) => {
+    quantity = event.target.value;
+  });
+
+  // recover the color chosen by the user
+  document.getElementById('colors').addEventListener('change', (event) => {
+    color = event.target.value;
+  });
+  // We listen to the click of the addToCart button
+  document.getElementById('addToCart').addEventListener('click', (result) => {
+// we check that the color is chosen and that the quantity is between 0 and 100
+    if (color != '' && quantity <= 100 && quantity != 0) {
+      const product = {
+        id: idProduct,
+        color: color,
+        quantity: quantity,
+      };
+      getBasket();
+      addBasket(product);
+    }
+    // If the user has not chosen a color, so he is told to do
+    else {
+      window.confirm(
+        'Veuillez sélectionner une quantité comprise entre 1 et 100 :)'
+      );
+    }
+  });
+}
+addToCart();
