@@ -155,5 +155,23 @@ localStorageCart.forEach((productLS) => {
 //Pour les routes POST, l’objet contact envoyé au serveur doit contenir les champs
 // firstName, lastName, address, city et email.
 // Le tableau des produits envoyé au back-end doit être un array de strings product-ID.
-// Les types de ces champs et leur présence doivent être validés avant 
-//l’envoi des données au serveur.
+// Les types de ces champs et leur présence doivent être ******validés******* avant 
+//l’envoi des données au serveur (alors je dois cree une fonctions de Validation)
+
+//Selection du bouton Commander
+const btnOrder = document.querySelector('#order');
+
+//Selection des inputs du formulaire
+let firstNameInput = document.getElementById('firstName');
+let lastNameInput = document.getElementById('lastName');
+let addressInput = document.getElementById('address');
+let cityInput = document.getElementById('city');
+let emailInput = document.getElementById('email');
+
+// crée fonctions de Validation the inputs
+
+// crée une fonction de Vérification du prénom
+// crée une fonction de Vérification du nom
+// crée une fonction de Vérification de la ville
+// crée une fonction de Vérification de l'adresse
+// crée une fonction Vérification de l'email
