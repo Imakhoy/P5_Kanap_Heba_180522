@@ -4,6 +4,7 @@ const itemsHtml = document.getElementById('cart__items');
 
 let product = [];
 
+
 if (localStorage.getItem('product') === null) {
   // Check if there is something in the localStorage
   window.confirm('Votre panier est vide');
@@ -54,7 +55,7 @@ if (localStorage.getItem('product') === null) {
     //recover product ID to put in an array to pass the POST request to the API
     product.push(productLS.id);
   }
-  
+
   //Étape 9 : Gérer la modification et la suppression de produits dans la page Panier
   //Modfiy
   //create function to modify the products in the cart:
@@ -104,6 +105,7 @@ if (localStorage.getItem('product') === null) {
   }
     //delete 
     //create a function to delete the products in the cart
+    function deleteBasket() {
     let inputsDelete = document.querySelectorAll('.deleteItem');
 
     inputsDelete.forEach((input) => {
@@ -146,4 +148,12 @@ localStorageCart.forEach((productLS) => {
         deleteBasket();
       });
   }); 
+}
 
+//Étape 10 : Passer la commande
+// I should valide the data
+//Pour les routes POST, l’objet contact envoyé au serveur doit contenir les champs
+// firstName, lastName, address, city et email.
+// Le tableau des produits envoyé au back-end doit être un array de strings product-ID.
+// Les types de ces champs et leur présence doivent être validés avant 
+//l’envoi des données au serveur.

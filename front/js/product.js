@@ -7,7 +7,7 @@ const idProduct = new URL(window.location.href).searchParams.get('id');
 
 
 //Etape 6: Insérer un produit et ses détails dans la page produit
-//Create a function displayProduct to display the product onthe page
+//Create a function displayProduct to display the product on the page
 function displayProduct(myProduct) {
   const productImg = document.createElement('img');
   const title = document.querySelector('#title');
@@ -115,7 +115,7 @@ function addToCart(){
     // If the user has not chosen a color, so he is told to do
     else {
       window.confirm(
-        'Veuillez sélectionner une quantité comprise entre 1 et 100 :)'
+        'Veuillez sélectionner une couleur et/ou une quantité comprise entre 1 et 100 :)'
       );
     }
   });
