@@ -154,7 +154,7 @@ localStorageCart.forEach((productLS) => {
 // firstName, lastName, address, city et email.
 // Le tableau des produits envoyé au back-end doit être un array de strings product-ID.
 // Les types de ces champs et leur présence doivent être ******validés******* avant 
-//l’envoi des données au serveur (alors je dois cree une fonctions de Validation)
+//l’envoi des données au serveur (alors je dois créer des fonctions de Validation)
 
 //Selection du bouton Commander
 const btnOrder = document.querySelector('#order');
@@ -214,13 +214,18 @@ function checkAddress(){
 }
  checkAddress();
 // crée une fonction Vérification de l'email
+//Afficher un message d’erreur si besoin (par exemple lorsqu’un utilisateur renseigne “bonjour” dans le champ “e-mail”).
 function checkEmail(){
-  if(RegexEmail(emailInput.value)){
+  if (RegexEmail(emailInput.value)) {
     return true;
-  }
+} else {
+  emailInput.nextElementSibling.textContent =
+    "Erreur: Merci d'entrer un courriel conforme. Ex:support@name.com";
   return false;
 }
- checkEmail();
+}
+checkEmail();
+
 
  //Create the user
  btnOrder.addEventListener('click', (e) => {
@@ -240,8 +245,59 @@ function checkEmail(){
       city: cityInput.value,
       email: emailInput.value,
     };
-  }});
-  
+
+
+  if (localStorage.product === undefined) {
+    alert(
+      "Votre panier est vide, retrouvez nos produits sur la page d'Accueil"
+    );
+    location.href = './index.html';
+  } else {
+    PostAPI(contact, product);
+  }
+} else {
+  alert("Vérifiez la saisie du formulaire s'il vous plait");
+  checkFirstName();
+  checkLastName();
+  checkCity();
+  checkAddress();
+  checkEmail();
+}
+});
+
+// Envoi à l'API du client et des produits + récupération du numéro de commande
+function PostAPI(contact, products) {
+fetch(
+  `http://localhost:3000/api/products/order`,
+
+  {
+    method: 'POST',
+
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ contact, products }),
+  }
+)
+  .then(function (res) {
+    if (res.ok) {
+      return res.json();
+    }
+  })
+
+  .then(function (api) {
+    location.href = `./confirmation.html?id=${api.orderId}`;
+  })
+
+  .catch(function (err) {
+    alert(
+      "Désolé une erreur s'est produite, nous n'avons pas pu finaliser votre commande, veuillez réessayer plus tard"
+    );
+    location.href = './index.html';
+  });
+}
+
+
 
 
 
