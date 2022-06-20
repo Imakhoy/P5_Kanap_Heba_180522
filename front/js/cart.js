@@ -240,10 +240,8 @@ function checkEmail(){
       city: cityInput.value,
       email: emailInput.value,
     };
-    
-
-
-
+  }});
+  
 
 
 
