@@ -208,19 +208,22 @@ function checkAddress(){
  checkAddress();
 // crée une fonction Vérification de l'email
 //Afficher un message d’erreur si besoin (par exemple lorsqu’un utilisateur renseigne “bonjour” dans le champ “e-mail”).
-function checkEmail(){
+function checkEmail() {
   if (RegexEmail(emailInput.value)) {
+    emailInput.nextElementSibling.textContent = '';
     return true;
-} else {
-  emailInput.nextElementSibling.textContent =
-    "Erreur: Merci d'entrer un courriel conforme. Ex:support@name.com";
-  return false;
+  } else {
+    emailInput.nextElementSibling.textContent =
+    "Erreur : merci d'entrer un courriel conforme. Ex : support@name.com";
+    return false;
+  }
 }
-}
-checkEmail();
 
-
- //Create the user
+emailInput.addEventListener('change', () => {
+  checkEmail();
+});
+  
+//Create the user
  btnOrder.addEventListener('click', (e) => {
   e.preventDefault();
 
