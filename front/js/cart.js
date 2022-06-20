@@ -169,9 +169,59 @@ let cityInput = document.getElementById('city');
 let emailInput = document.getElementById('email');
 
 // crée fonctions de Validation the inputs
+function RegexAlpha(value) {
+  return /^[A-Za-z\s]+$/.test(value);
+  
 
-// crée une fonction de Vérification du prénom
-// crée une fonction de Vérification du nom
+}
+function RegexAlphaNum(value) {
+  return /^[a-zA-Z0-9,]+$/.test(value);
+}
+function RegexEmail(value) {
+  return /^[a-zA-Z0-9.!#$%&'*]+@[a-zA-Z0-9-]+.[a-zA-Z0-9]+$/.test(value);
+}
+
+// crée une fonction de Vérification firstName
+function checkFirstName() {
+  if (RegexAlpha(firstNameInput.value)){
+  return true;
+}
+return false;
+
+  }
+  checkFirstName();
+
+// crée une fonction de Vérification du lastName
+function checkLastName(){
+  if(RegexAlpha(lastNameInput.value)){
+    return true;
+  }
+  return false;
+}
+checkLastName();
 // crée une fonction de Vérification de la ville
+function checkCity(){
+  if(RegexAlpha(lastNameInput.value)){
+    return true;
+  }
+  return false;
+}
+checkCity();
 // crée une fonction de Vérification de l'adresse
+function checkAddress(){
+  if (RegexAlphaNum(addressInput.value)){
+    return true;
+  }
+  return false;
+}
+ checkAddress();
 // crée une fonction Vérification de l'email
+function checkEmail(){
+  if(RegexEmail(emailInput.value)){
+    return true;
+  }
+  return false;
+}
+ checkEmail();
+
+

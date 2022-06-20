@@ -8,6 +8,7 @@
     .catch(function (error) {
       console.log(error);
     });
+    
 //create a function to insert the products
 function displayProducts(dataProduct) {
     if (dataProduct) {
