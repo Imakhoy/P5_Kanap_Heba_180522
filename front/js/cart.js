@@ -57,7 +57,6 @@ if (localStorage.getItem('product') === null) {
   }
 
   //Étape 9 : Gérer la modification et la suppression de produits dans la page Panier
-  //Modfiy
   //create function to modify the products in the cart:
   function changeBasket() {
     let inputsQuantity = document.querySelectorAll('.itemQuantity');
@@ -103,7 +102,6 @@ if (localStorage.getItem('product') === null) {
       });
     });
   }
-    //delete 
     //create a function to delete the products in the cart
     function deleteBasket() {
     let inputsDelete = document.querySelectorAll('.deleteItem');
@@ -223,5 +221,29 @@ function checkEmail(){
   return false;
 }
  checkEmail();
+
+ //Create the user
+ btnOrder.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  if (
+    checkFirstName() &&
+    checkLastName() &&
+    checkCity() &&
+    checkAddress() &&
+    checkEmail()
+  ) {
+    const contact = {
+      firstName: firstNameInput.value,
+      lastName: lastNameInput.value,
+      address: addressInput.value,
+      city: cityInput.value,
+      email: emailInput.value,
+    };
+    
+
+
+
+
 
 
