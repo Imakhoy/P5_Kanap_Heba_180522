@@ -149,13 +149,6 @@ localStorageCart.forEach((productLS) => {
 }
 
 //Étape 10 : Passer la commande
-// I should valide the data
-//Pour les routes POST, l’objet contact envoyé au serveur doit contenir les champs
-// firstName, lastName, address, city et email.
-// Le tableau des produits envoyé au back-end doit être un array de strings product-ID.
-// Les types de ces champs et leur présence doivent être ******validés******* avant 
-//l’envoi des données au serveur (alors je dois créer des fonctions de Validation)
-
 //Selection du bouton Commander
 const btnOrder = document.querySelector('#order');
 
