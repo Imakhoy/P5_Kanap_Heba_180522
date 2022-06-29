@@ -9,7 +9,7 @@ if (localStorage.getItem('product') === null) {
   // Check if there is something in the localStorage
   window.confirm('Votre panier est vide');
 } else {
-  // management the cart
+  // Management the cart
   let localStorageCart = JSON.parse(localStorage.getItem('product'));
 
   //create function to display the cart
@@ -169,7 +169,7 @@ function RegexAlpha(value) {
 
 }
 function RegexAlphaNum(value) {
-  return /^[a-zA-Z0-9,]+$/.test(value);
+  return /^[a-zA-Z0-9,]/+$.test(value);
   //^[a-zA-Z0-9,]+$
   //^[1-9]+[0-9]*$
   

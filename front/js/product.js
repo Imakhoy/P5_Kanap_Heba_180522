@@ -1,12 +1,10 @@
-//*Etape 4 : faire le lien entre un produit de la page d'accueil et la page produit
-
-//Recupération des paramètres URL avec la propriété window.location.href
+//Etape 4 : faire le lien entre un produit de la page d'accueil et la page produit.
 
 //Utiliser searchParams: pour passer l’id d’une page à une autre)
 const idProduct = new URL(window.location.href).searchParams.get('id');
 
 
-//Etape 6: Insérer un produit et ses détails dans la page produit
+//Etape 6: Insérer un produit et ses détails dans la page produit.
 //Create a function displayProduct to display the product on the page
 function displayProduct(myProduct) {
   const productImg = document.createElement('img');
@@ -24,7 +22,7 @@ function displayProduct(myProduct) {
   price.textContent = myProduct.price;
   description.textContent = myProduct.description;
 
-//Affichage des couleurs using for in
+//Affichage des couleurs using loop for in
   for (let i in myProduct.colors) {
     colors.insertAdjacentHTML(
       'beforeend',
@@ -41,13 +39,12 @@ function displayProduct(myProduct) {
       console.log(error);
     });
 
-    /* Etape 7 : Ajouter des produits dans le panier */
-    // create a function 'saveBasket' qui récupère le panier et l'envoie dans le localStorage
+    // Etape 7 : Ajouter des produits dans le panier
+    // Create a function 'saveBasket' qui récupère le panier et l'envoie dans le localStorage
     function saveBasket(basket) {
         localStorage.setItem('product', JSON.stringify(basket));
     }
-    //Alors la je dois cree une fonction pour récupèrer le panier dans le localStorage.
-    //if it is empty, on retourne un array, and if there are elements we gonna return in the basket
+    //Crée une fonction pour récupèrer le panier dans le localStorage.
     function getBasket() {
         let basket = localStorage.getItem('product');
         if (basket == null) {
@@ -56,11 +53,11 @@ function displayProduct(myProduct) {
           return JSON.parse(basket);
         }
       }
-    // To add a product in the basket 
+    // Function to add a product in the basket 
     function addBasket(product) {
-        //put the contents of the basket in the basket variable
+        //On met le contenu du panier dans la variable basket
         let basket = getBasket();
-          // On regarde si le produit ajouté au panier existe dans la même couleur ou pas
+        // On regarde si le produit ajouté au panier existe dans la même couleur ou pas
   let foundProduct = basket.find(
     (element) => element.id == product.id && element.color == product.color
   );
@@ -79,14 +76,14 @@ function displayProduct(myProduct) {
     // If no, we add the product in basket
     else {
         product.quantity = quantity;
-        //to add the product at the end of our basket
+        // on ajoute notre product à la fin de notre basket
         basket.push(product); 
         location.reload();
         window.confirm(
         `Félicitations! Votre commande de ${quantity} ${title.textContent} ${color} est ajoutée au panier`
         );
     }
-    saveBasket(basket); // save
+    saveBasket(basket); //Save
     }
     
 // Ce que l'on veut dans notre tableau grace au clic de "ajouter au panier":
@@ -102,7 +99,7 @@ function addToCart(){
   });
   // We listen to the click of the addToCart button
   document.getElementById('addToCart').addEventListener('click', (result) => {
-// we check that the color is chosen and that the quantity is between 0 and 100
+    // we check that the color is chosen and that the quantity is between 0 and 100
     if (color != '' && quantity <= 100 && quantity != 0) {
       const product = {
         id: idProduct,

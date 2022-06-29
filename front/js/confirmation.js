@@ -1,5 +1,4 @@
 // Etape 11 : Afficher le numéro de commande
-
 //Récuperer l'Url de la page affichée
 const url = new URL(location.href);
 
