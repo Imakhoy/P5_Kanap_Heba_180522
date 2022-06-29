@@ -169,9 +169,9 @@ function RegexAlpha(value) {
 
 }
 function RegexAlphaNum(value) {
-  return /^[a-zA-Z0-9,]+$/.test(value);
-  //^[a-zA-Z0-9,]+$
-  //^[1-9]+[0-9]*$
+  return /^[a-zA-Z0-9,]/+$.test(value);
+  //^[a-zA-Z0-9,]/+$
+  //^[1-9]/+$
   
 }
 function RegexEmail(value) {
@@ -251,6 +251,7 @@ function checkEmail() {
     };
 
 
+    
   if (localStorage.product === undefined) {
     alert(
       "Votre panier est vide, retrouvez nos produits sur la page d'Accueil"

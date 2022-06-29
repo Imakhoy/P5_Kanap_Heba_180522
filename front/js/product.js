@@ -86,7 +86,7 @@ function displayProduct(myProduct) {
     saveBasket(basket); //Save
     }
     
-// Ce que l'on veut dans notre tableau grace au clic de "ajouter au panier":
+// Ce que l'on veut dans notre tableau grace au clic de "ajouter au panier"
 function addToCart(){
   // recover the quantity chosen by the user
   document.getElementById('quantity').addEventListener('change', (event) => {
@@ -100,7 +100,7 @@ function addToCart(){
   // We listen to the click of the addToCart button
   document.getElementById('addToCart').addEventListener('click', (result) => {
     // we check that the color is chosen and that the quantity is between 0 and 100
-    if (color != '' && quantity <= 100 && quantity != 0) {
+    if (color != '' && quantity <= 100 && quantity > 0 ) {
       const product = {
         id: idProduct,
         color: color,
