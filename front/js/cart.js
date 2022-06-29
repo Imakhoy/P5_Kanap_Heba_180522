@@ -175,54 +175,57 @@ function RegexEmail(value) {
 // crée une fonction de Vérification firstName
 function checkFirstName() {
   if (RegexAlpha(firstNameInput.value)){
+    firstNameInput.nextElementSibling.textContent = "";
   return true;
+}else{
+  firstNameInput.nextElementSibling.textContent = "Erreur : merci d'entrer un prénom conforme, Ex: Charles, Jean Charles, Sarah, Adnan";
+  return false;
 }
-return false;
-
-  }
-  checkFirstName();
-
+}
 // crée une fonction de Vérification du lastName
 function checkLastName(){
   if(RegexAlpha(lastNameInput.value)){
+    lastNameInput.nextElementSibling.textContent = "";
     return true;
-  }
+  }else{
+    lastNameInput.nextElementSibling.textContent ="Erreur : merci d'entrer un nom conforme, Ex: Daoud, Boyer, Poutou";
   return false;
 }
-checkLastName();
+}
 // crée une fonction de Vérification de la ville
 function checkCity(){
   if(RegexAlpha(lastNameInput.value)){
+    cityInput.nextElementSibling.textContent = "";
     return true;
+  } else {
+    cityInput.nextElementSibling.textContent =
+      "Erreur : merci d'entrer une ville conforme, Ex: Paris, Paris 12ème";
+    return false;
   }
-  return false;
 }
-checkCity();
 // crée une fonction de Vérification de l'adresse
 function checkAddress(){
   if (RegexAlphaNum(addressInput.value)){
+    addressInput.nextElementSibling.textContent ="";
     return true;
+  } else {
+    addressInput.nextElementSibling.textContent =
+      "Erreur : merci d'entrer une adresse conforme, Ex: 254 rue du faubourg St-Antoine, Rue Jean-Jaures ";
+    return false;
   }
-  return false;
 }
- checkAddress();
 // crée une fonction Vérification de l'email
 //Afficher un message d’erreur si besoin (par exemple lorsqu’un utilisateur renseigne “bonjour” dans le champ “e-mail”).
 function checkEmail() {
   if (RegexEmail(emailInput.value)) {
-    emailInput.nextElementSibling.textContent = '';
+    emailInput.nextElementSibling.textContent ="";
     return true;
   } else {
     emailInput.nextElementSibling.textContent =
     "Erreur : merci d'entrer un courriel conforme. Ex : support@name.com";
     return false;
   }
-}
-
-emailInput.addEventListener('change', () => {
-  checkEmail();
-});
-  
+}  
 //Create the user
  btnOrder.addEventListener('click', (e) => {
   e.preventDefault();
