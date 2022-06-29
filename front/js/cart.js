@@ -170,6 +170,9 @@ function RegexAlpha(value) {
 }
 function RegexAlphaNum(value) {
   return /^[a-zA-Z0-9,]+$/.test(value);
+  //^[a-zA-Z0-9,]+$
+  //^[1-9]+[0-9]*$
+  
 }
 function RegexEmail(value) {
   return /^[a-zA-Z0-9.!#$%&'*]+@[a-zA-Z0-9-]+.[a-zA-Z0-9]+$/.test(value);
@@ -236,7 +239,6 @@ function checkEmail() {
   if (
     checkFirstName() &&
     checkLastName() &&
-    checkCity() &&
     checkAddress() &&
     checkEmail()
   ) {
