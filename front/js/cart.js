@@ -159,6 +159,9 @@ let addressInput = document.getElementById('address');
 let cityInput = document.getElementById('city');
 let emailInput = document.getElementById('email');
 
+firstNameInput.addEventListener('keyup', (e) =>{ checkFirstName(); });
+
+
 // crée fonctions de Validation the inputs
 function RegexAlpha(value) {
   return /^[A-Za-z\s]+$/.test(value);
@@ -256,11 +259,6 @@ function checkEmail() {
   }
 } else {
   alert("Vérifiez la saisie du formulaire s'il vous plait");
-  checkFirstName();
-  checkLastName();
-  checkCity();
-  checkAddress();
-  checkEmail();
 }
 });
 
