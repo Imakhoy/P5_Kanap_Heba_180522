@@ -160,24 +160,22 @@ let cityInput = document.getElementById('city');
 let emailInput = document.getElementById('email');
 
 firstNameInput.addEventListener('keyup', (e) =>{ checkFirstName(); });
-
-
+lastNameInput.addEventListener('keyup', (e) =>{ checkLastName(); });
+addressInput.addEventListener('keyup', (e) =>{ checkAddress(); });
+cityInput.addEventListener('keyup', (e) =>{ checkCity(); });
+emailInput.addEventListener('keyup', (e) =>{ checkEmail(); });
 // crée fonctions de Validation the inputs
 function RegexAlpha(value) {
   return /^[A-Za-z\s]+$/.test(value);
-  
-
 }
+
 function RegexAlphaNum(value) {
-  return /^[a-zA-Z0-9,]/+$.test(value);
-  //^[a-zA-Z0-9,]/+$
-  //^[1-9]/+$
-  
-}
-function RegexEmail(value) {
-  return /^[a-zA-Z0-9.!#$%&'*]+@[a-zA-Z0-9-]+.[a-zA-Z0-9]+$/.test(value);
+  return /^[a-zA-Z0-9,]+$/.test(value);
 }
 
+function RegexEmail(value) {
+  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+}
 // crée une fonction de Vérification firstName
 function checkFirstName() {
   if (RegexAlpha(firstNameInput.value)){
@@ -200,7 +198,7 @@ function checkLastName(){
 }
 // crée une fonction de Vérification de la ville
 function checkCity(){
-  if(RegexAlpha(lastNameInput.value)){
+  if(RegexAlpha(cityInput.value)){
     cityInput.nextElementSibling.textContent = "";
     return true;
   } else {
@@ -240,6 +238,7 @@ function checkEmail() {
     checkFirstName() &&
     checkLastName() &&
     checkAddress() &&
+    checkCity()&&
     checkEmail()
   ) {
     const contact = {
@@ -262,6 +261,11 @@ function checkEmail() {
   }
 } else {
   alert("Vérifiez la saisie du formulaire s'il vous plait");
+  checkFirstName();
+  checkLastName();
+  checkCity();
+  checkAddress();
+  checkEmail();
 }
 });
 
