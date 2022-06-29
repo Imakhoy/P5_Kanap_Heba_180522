@@ -169,7 +169,7 @@ function RegexAlpha(value) {
 
 }
 function RegexAlphaNum(value) {
-  return /^[a-zA-Z0-9,]/+$.test(value);
+  return /^[a-zA-Z0-9,]+$/.test(value);
   //^[a-zA-Z0-9,]+$
   //^[1-9]+[0-9]*$
   
